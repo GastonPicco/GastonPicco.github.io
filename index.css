@@ -134,7 +134,7 @@ p{
 }
 
 /*test area*/
-.H{
+/*.H{
     background-color: rgba(255, 0, 0, 0.055);
     position: absolute;
     height: 100vh;
@@ -151,7 +151,7 @@ p{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
+}*/
 /*font-family: 'Barlow Condensed', sans-serif;
 font-family: 'Bebas Neue', sans-serif;*/
 
