@@ -9,12 +9,6 @@ const selector = document.querySelector('.selector')
 const controlBtn = document.getElementById('control-btn')
 const menu = document.getElementById('menu')
 // Botones de barra
-const nosotros = document.getElementById('nosotros')
-const asi = document.getElementById('asi')
-const marcas = document.getElementById('marcas')
-const contactanos = document.getElementById('contactanos')
-const unete = document.getElementById('unete')
-const novedades = document.getElementById('novedades')
 
 let firstClick = false;
 let btnID = 0;
@@ -34,7 +28,7 @@ controlBtn.addEventListener('click', () => {
 });
 
 botonesMovil.forEach((botonesMov, indice) => {
-    botonesMov.addEventListener('click',() => {
+    botonesMov.addEventListener('click', () => {
         btnID = (indice)
         console.log(indice)
         cambiarBoton(indice)
@@ -43,7 +37,7 @@ botonesMovil.forEach((botonesMov, indice) => {
 });
 
 botones.forEach((btn, indice) => {
-    btn.addEventListener('click',() => {
+    btn.addEventListener('click', () => {
         btnID = (indice)
         console.log(indice)
         cambiarBoton(indice)
@@ -51,23 +45,23 @@ botones.forEach((btn, indice) => {
 });
 
 menu.addEventListener('click', () => {
-    if(botonInterct == false){
+    if (botonInterct == false) {
         for (let i = 0; i < botones.length; i++) {
             mostrarBotonesMovil(i);
         }
-        setTimeout(function() {
+        setTimeout(function () {
             menu.classList.remove('show');
         }, 500);
         console.log("fondo clickeado");
     }
-    else{
+    else {
         botonInterct = false;
     }
 });
 
 // FUNCIONES
 
-function cambiarBoton(boton){
+function cambiarBoton(boton) {
     botones.forEach((btn, indice) => {
         btn.classList.remove("active");
         botones[boton].classList.add("active")
@@ -93,7 +87,7 @@ function mostrarBotonesMovil(index) {
     }, index * 50);
 }
 
-function logoClickEvent(){
+function logoClickEvent() {
 
 
     logo.classList.toggle('clicked'); // Agrega o quita la clase 'clicked' al hacer clic
@@ -103,36 +97,36 @@ function logoClickEvent(){
     for (let i = 0; i < botones.length; i++) {
         mostrarBotones(i);
     }
-    if(logo.className.match("clicked") && firstClick==false){
+    if (logo.className.match("clicked") && firstClick == false) {
         firstClick = true;
         console.log("clickeado");
         cambiarBoton(0);
     }
-    else if(logo.className.match("clicked") && firstClick==true){
+    else if (logo.className.match("clicked") && firstClick == true) {
         ActualizarContenedor(btnID);
     }
-    else{
+    else {
         for (let i = 0; i < mainContent.length; i++) {
             mainContent[i].classList.add('notclicked')
         }
     }
 }
 
-function ActualizarContenedor(id){
-    
+function ActualizarContenedor(id) {
+
     for (let i = 0; i < mainContent.length; i++) {
         mainContent[i].classList.add('notclicked')
         mainContent[i].classList.remove('left')
         mainContent[i].classList.remove('right')
     }
-    for (let i = 0; i < id; i++){
+    for (let i = 0; i < id; i++) {
         mainContent[i].classList.add('left')
     }
-    for (let i = id+1;i < mainContent.length; i++){
+    for (let i = id + 1; i < mainContent.length; i++) {
         mainContent[i].classList.add('right')
     }
     mainContent[id].classList.remove('notclicked')
     mainContent[id].classList.remove('left')
     mainContent[id].classList.remove('right')
-    
+
 }
