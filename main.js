@@ -17,7 +17,7 @@ const unete = document.getElementById('unete')
 const novedades = document.getElementById('novedades')
 
 let firstClick = false;
-let btnID
+let btnID = 0;
 let selection = true;
 let botonInterct = false;
 

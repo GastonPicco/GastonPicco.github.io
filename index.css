@@ -16,6 +16,19 @@
 body {
     background-color: #b4b4b4;
 }
+.main-content::-webkit-scrollbar {
+    width: 14px;
+    transition:all 1s;
+}
+.main-content::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.075);   
+    box-shadow: inset 0 0 2px #04122400;
+    border-radius: 7px;
+}
+.main-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.473);   
+    box-shadow: inset 0 0 2px #04122477;
+}
 
 .background {
     position: absolute;
@@ -126,17 +139,16 @@ body {
 }
 .main-content {
     position: absolute;
-    background-color: #1b1b1f;
     position: relative;
     display: inline-block;
     height: calc(100% - 4vh);
-    width: 96vw;
+    width: 70vw;
     left: 50%;
     transform: translate(-50%, 0);
-    transition: transform 0.5s, box-shadow 0.5s, background-color 0.2s ease-out;
-    transition-delay: 0.2s;
-    border-radius: 15px;
-    box-shadow: 2px 4px 5px rgba(0, 2, 15, 0.507);
+    transition: transform 0.5s, background-color 0.2s ease-out;
+    border-radius: 5px;
+    backdrop-filter: blur(6px);
+    background-color: rgba(255, 255, 255, 0.466);   
     overflow: auto;
 }
 .main-content.left {
@@ -144,12 +156,14 @@ body {
     transition-delay: 0.1s;
     background-color: rgba(95, 158, 160, 0);
     color: rgba(95, 158, 160, 0);
+    backdrop-filter: blur(0px);
 }
 .main-content.right {
     transform: translate(70%,0);
     transition-delay: 0.1s;
     background-color: rgba(95, 158, 160, 0);
     color: rgba(95, 158, 160, 0);
+    backdrop-filter: blur(0px);
 }
 
 .main-content.notclicked {
@@ -219,6 +233,30 @@ body {
 .main-content.notclicked.right h3{
     color: rgba(95, 158, 160, 0);
 }
+.main-content.left li{
+    color: rgba(95, 158, 160, 0);
+}
+.main-content.right li{
+    color: rgba(95, 158, 160, 0);
+}
+.main-content.notclicked.left li{
+    color: rgba(95, 158, 160, 0);
+}
+.main-content.notclicked.right li{
+    color: rgba(95, 158, 160, 0);
+}
+.main-content.left a{
+    color: rgba(95, 158, 160, 0);
+}
+.main-content.right a{
+    color: rgba(95, 158, 160, 0);
+}
+.main-content.notclicked.left a{
+    color: rgba(95, 158, 160, 0);
+}
+.main-content.notclicked.right a{
+    color: rgba(95, 158, 160, 0);
+}
 /*
 `7MM"""Yp,                                     
   MM    Yb                                     
@@ -236,19 +274,22 @@ body {
     /* Centra verticalmente los elementos en la barra */
     height: var(--bar-height1);
     /* Altura de la barra (ajustable) */
-    background-color: #ffffff00;
+    backdrop-filter: blur(5px);
+    background-color: #00000038;
     /* Color de fondo de la barra */
     margin-left: 0vw;
     margin-right: 0vw;
     z-index: 500;
-    transition: all 0.5s;
-    transition: padding 0s;
+    transition: all 0.2s;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.445);
     
 }
 
 .bar.notclicked {
     transform: translate(0, -100px);
     z-index: 500;
+    transition: all 0.2s;
+    transition-delay: 0.6s;
 }
 /*
 `7MM"""Yp,             mm                                           
@@ -362,21 +403,32 @@ body {
     background-image: url(back.png); /* */
     background-position-x: 90px;
     background-size: 320% auto ;
-    text-shadow: 0px 0px 4px rgba(0, 0, 0, 1),0px 0px 4px rgba(0, 0, 0, 1);
-    color: rgb(255, 255, 255);
+    color: rgba(255, 255, 255, 0.774);
     font-size: 1.6rem;
-    font-family: Poppins;
+    font-family: Roboto;
     font-weight: 500;
     height: 4.8rem;
     text-align: start;
     padding-left: 30px;
-    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25), inset 0 1px 12px rgba(0, 0, 0, 0.253);
-    border: 1px solid rgba(0, 0, 0, 0.678);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25), inset 0 1px 5px rgba(0, 0, 0, 0.082);
     transform: translateX(-20px);
     transition: all 0.2s ease-in-out;
+    border-radius: 3px;
+    box-shadow:inset 0px -5px 13px rgb(0, 0, 0);
+    clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 99% 2%, 99% 3%, 
+    99% 4%, 100% 5%, 99% 6%, 99% 8%, 99% 10%, 98% 11%, 98% 12%, 
+    98% 14%, 97% 15%, 98% 17%, 97% 19%, 98% 20%, 97% 22%, 98% 24%, 
+    98% 25%, 98% 26%, 99% 27%, 98% 28%, 98% 29%, 98% 30%, 98% 32%, 
+    97% 33%, 97% 34%, 98% 36%, 97% 37%, 97% 38%, 97% 40%, 96% 41%, 
+    96% 43%, 96% 44%, 96% 46%, 96% 48%, 95% 50%, 95% 52%, 94% 54%, 
+    93% 57%, 94% 59%, 93% 62%, 93% 64%, 92% 68%, 92% 70%, 91% 71%, 
+    92% 73%, 91% 76%, 90% 78%, 90% 80%, 89% 82%, 89% 84%, 90% 86%, 
+    89% 87%, 87% 90%, 88% 92%, 87% 94%, 86% 96%, 87% 97%, 86% 99%, 
+    85% 100%);
+
 }
 .btn-section-selector.active{
-    transform: translateX(0px);
+    transform: translate(0px,-1px);
 }
     
 .btn-section-selector.hidden{ 
@@ -398,31 +450,31 @@ P'   MM   `7                       MM
 h2{
     font-size: 2rem;
     color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     padding-left: 3rem;
-    padding-top: 2rem;
     transition: color 0.15s ease-out;
-    font-family: Poppins;
+    font-family: Roboto;
     letter-spacing: 1px;
 }
 
 h3{
     font-size: 1.8rem;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     padding-left: 3rem;
     transition: color 0.15s ease-out;
-    font-family: Poppins;
+    font-family: Roboto;
     letter-spacing: 1px;
 }
 p {
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1.5rem;
-    font-family: Poppins;
+    font-family: Roboto;
     letter-spacing: 1px;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-family: 'Barlow Condensed', sans-serif;
     padding-left: 6rem;
     padding-right: 6rem;
@@ -430,11 +482,11 @@ p {
     padding-bottom: 2rem;
 }
 li{
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1.5rem;
-    font-family: Poppins;
+    font-family: Roboto;
     letter-spacing: 1px;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-family: 'Barlow Condensed', sans-serif;
     padding-left: 6rem;
     padding-right: 6rem;
@@ -442,7 +494,17 @@ li{
     padding-bottom: 2rem;
 }
 a{
-    color: cyan
+    font-weight: 400;
+    font-size: 1.5rem;
+    font-family: Roboto;
+    letter-spacing: 1px;
+    color: rgb(0, 26, 255);
+    font-family: 'Barlow Condensed', sans-serif;
+    transition: color 0.15s ease-out;
+    padding-bottom: 2rem;
+}
+a.tel{
+    color: rgb(0, 0, 0);
 }
 
 /*
