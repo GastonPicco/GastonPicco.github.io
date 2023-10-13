@@ -746,6 +746,9 @@ Wb  YML.dML..d'    M  `YM'   MM  YM.    , `Mb    MM    MM  8M   MM
 
 @media (max-width:768px) {
 
+    .main-content{
+        width: 90%;
+    }
     .main-content.marca{
         display: flex;
         flex-flow: column;
