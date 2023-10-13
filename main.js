@@ -4,8 +4,10 @@ const logoTxt = document.getElementById('logoTxt')
 const mainContent = document.querySelectorAll('.main-content')
 const mainBar = document.getElementById('main-bar')
 const botones = document.querySelectorAll('.btn');
+const botonesMovil = document.querySelectorAll('.btn-section-selector')
 const selector = document.querySelector('.selector')
 const controlBtn = document.getElementById('control-btn')
+const menu = document.getElementById('menu')
 // Botones de barra
 const nosotros = document.getElementById('nosotros')
 const asi = document.getElementById('asi')
@@ -13,67 +15,86 @@ const marcas = document.getElementById('marcas')
 const contactanos = document.getElementById('contactanos')
 const unete = document.getElementById('unete')
 const novedades = document.getElementById('novedades')
+
 let firstClick = false;
-//
+let btnID
 let selection = true;
+let botonInterct = false;
 
 logo.addEventListener('click', () => {
     logoClickEvent();
 });
 
-nosotros.addEventListener('click',() => {
-    btnID = 0;
-    cambiarBoton(nosotros);
-})
-asi.addEventListener('click',() =>{
-    btnID = 1;
-    cambiarBoton(asi);
-})
-marcas.addEventListener('click',() =>{
-    btnID = 2;
-    cambiarBoton(marcas);
-})
-contactanos.addEventListener('click',() =>{
-    btnID = 3;
-    cambiarBoton(contactanos);
-})
-unete.addEventListener('click',() =>{
-    btnID = 4;
-    cambiarBoton(unete);
-})
-novedades.addEventListener('click',() =>{
-    btnID = 5;
-    cambiarBoton(novedades);
-})
+controlBtn.addEventListener('click', () => {
+    for (let i = 0; i < botones.length; i++) {
+        mostrarBotonesMovil(i);
+    }
+    menu.classList.add('show');
+    console.log("menu")
+});
 
+botonesMovil.forEach((botonesMov, indice) => {
+    botonesMov.addEventListener('click',() => {
+        btnID = (indice)
+        console.log(indice)
+        cambiarBoton(indice)
+        botonInterct = true;
+    })
+});
+
+botones.forEach((btn, indice) => {
+    btn.addEventListener('click',() => {
+        btnID = (indice)
+        console.log(indice)
+        cambiarBoton(indice)
+    })
+});
+
+menu.addEventListener('click', () => {
+    if(botonInterct == false){
+        for (let i = 0; i < botones.length; i++) {
+            mostrarBotonesMovil(i);
+        }
+        setTimeout(function() {
+            menu.classList.remove('show');
+        }, 500);
+        console.log("fondo clickeado");
+    }
+    else{
+        botonInterct = false;
+    }
+});
 
 // FUNCIONES
-// Selecciona un boton
-function cambiarBoton(boton){
-    nosotros.classList.remove('active');
-    asi.classList.remove('active');
-    marcas.classList.remove('active')
-    contactanos.classList.remove('active')
-    unete.classList.remove('active')
-    novedades.classList.remove('active') 
-    boton.classList.add('active')
 
-    ActualizarContenedor(btnID)
+function cambiarBoton(boton){
+    botones.forEach((btn, indice) => {
+        btn.classList.remove("active");
+        botones[boton].classList.add("active")
+        ActualizarContenedor(boton)
+    });
+    botonesMovil.forEach((btnMov, indice) => {
+        btnMov.classList.remove("active");
+        botonesMovil[boton].classList.add("active")
+        ActualizarContenedor(boton)
+    });
+
 }
 
-/*function mostrarBigBtn(index) {
-    setTimeout(() => {
-        bigBtns[index].classList.toggle('show');
-    }, index * 18); // 500ms de retraso entre cada contenedor (ajustable)
-}*/
 function mostrarBotones(index) {
     setTimeout(() => {
         botones[index].classList.toggle('show');
     }, index * 100);
     mainBar.classList.toggle('notclicked')
 }
+function mostrarBotonesMovil(index) {
+    setTimeout(() => {
+        botonesMovil[index].classList.toggle('hidden');
+    }, index * 50);
+}
 
 function logoClickEvent(){
+
 
     logo.classList.toggle('clicked'); // Agrega o quita la clase 'clicked' al hacer clic
     logoTxt.classList.toggle('clicked');
@@ -85,8 +106,7 @@ function logoClickEvent(){
     if(logo.className.match("clicked") && firstClick==false){
         firstClick = true;
         console.log("clickeado");
-        btnID = 0;
-        cambiarBoton(nosotros);
+        cambiarBoton(0);
     }
     else if(logo.className.match("clicked") && firstClick==true){
         ActualizarContenedor(btnID);
