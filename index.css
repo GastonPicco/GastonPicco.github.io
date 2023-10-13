@@ -19,19 +19,19 @@ body {
 }
 
 .main-content::-webkit-scrollbar {
-    width: 14px;
+    width: 10px;
     transition: all 1s;
 }
 
 .main-content::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.075);
+    background-color: rgba(255, 255, 255, 0);
     box-shadow: inset 0 0 2px #04122400;
     border-radius: 7px;
 }
 
 .main-content::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.473);
-    box-shadow: inset 0 0 2px #04122477;
+    background-color: rgba(255, 255, 255, 0.795);
+    box-shadow: inset 0 0 2px #04122418;
 }
 
 .background {
@@ -148,32 +148,40 @@ body {
     position: absolute;
     position: relative;
     display: inline-block;
-    height: calc(100% - 4vh);
+    height: calc(100% - 0vh);
     width: 70vw;
     left: 50%;
     transform: translate(-50%, 0);
     transition: transform 0.5s, background-color 0.2s ease-out;
-    border-radius: 5px;
-    backdrop-filter: blur(6px);
-    background-color: rgba(255, 255, 255, 0.466);
+    border-radius: 0px;
     overflow: auto;
+    display: flex;
+    flex-flow: column;
+    gap: 30.5px;
+}
+.main-content.marca{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas de tamaño igual */
+    gap: 30.5px; /* Espacio entre las columnas */
+}
+.section.main{
+    grid-column: span 2;
 }
 
-.main-content.left {
+.main-content.left{
     transform: translate(-170%, 0);
     transition-delay: 0.1s;
-    background-color: rgba(95, 158, 160, 0);
+    background-color: rgba(255, 255, 255, 0);
     color: rgba(95, 158, 160, 0);
-    backdrop-filter: blur(0px);
 }
 
-.main-content.right {
+.main-content.right{
     transform: translate(70%, 0);
     transition-delay: 0.1s;
-    background-color: rgba(95, 158, 160, 0);
+    background-color: rgba(255, 255, 255, 0);
     color: rgba(95, 158, 160, 0);
-    backdrop-filter: blur(0px);
 }
+
 
 .main-content.notclicked {
     position: absolute;
@@ -181,6 +189,29 @@ body {
     box-shadow: 4px 16px 20px rgba(0, 2, 15, 0);
     transition-delay: 0s;
 
+}
+
+.main-content.left > .section,.main-content.right > .section {
+    background-color: rgba(255, 255, 255, 0);
+    border: rgba(255, 255, 255, 0);
+    
+}
+
+.section{
+    transition: all 0.5s;
+    flex-flow: column;
+    border-radius: 8px;
+    border: 1px rgba(255, 255, 255, 0.479) solid;
+    backdrop-filter: blur(0.5px);
+    background-color: rgba(255, 255, 255, 0.377);
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.section:hover{
+    background-color: rgba(255, 255, 255, 0.658);
+    transition: all 0.5s;
+    box-shadow: inset 0px 0px 10px white;
 }
 
 /*
@@ -193,16 +224,16 @@ body {
 .JMML.     `Moo9^Yo. `Wbmd"MML. `Mbmmd'       `"bmmd"'     `Mbod"YML.  `Mbmo 
 */
 .main-content.notclicked.left {
-    transform: translate(-170%, 0%);
+    transform: translate(-175%, 0%);
     transition-delay: 0.1s;
-    background-color: rgba(95, 158, 160, 0);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0),rgba(255, 255, 255, 0),rgba(255, 255, 255, 0));
     color: rgba(95, 158, 160, 0);
 }
 
 .main-content.notclicked.right {
-    transform: translate(70%, 0%);
+    transform: translate(75%, 0%);
     transition-delay: 0.1s;
-    background-color: rgba(95, 158, 160, 0);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0),rgba(255, 255, 255, 0),rgba(255, 255, 255, 0));
     color: rgba(95, 158, 160, 0);
 }
 
@@ -285,6 +316,24 @@ body {
 .main-content.notclicked.right a {
     color: rgba(95, 158, 160, 0);
 }
+
+.main-content.left img {
+opacity: 0;
+}
+
+.main-content.right img {
+opacity: 0;
+}
+
+.main-content.notclicked.left img {
+opacity: 0;
+}
+
+.main-content.notclicked.right img {
+opacity: 0;
+}
+
+
 
 /*
 `7MM"""Yp,                                     
@@ -463,6 +512,9 @@ body {
 
 .btn-section-selector.active {
     transform: translate(0px, -1px);
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+    text-shadow: 1px 1px 3px #ffffff3f;
 }
 
 .btn-section-selector.hidden {
@@ -505,7 +557,7 @@ h3 {
 }
 
 p {
-    font-weight: 400;
+    font-weight: 500;
     font-size: 1.5rem;
     font-family: Roboto;
     letter-spacing: 1px;
@@ -514,7 +566,6 @@ p {
     padding-left: 6rem;
     padding-right: 6rem;
     transition: color 0.15s ease-out;
-    padding-bottom: 2rem;
 }
 
 li {
@@ -527,24 +578,40 @@ li {
     padding-left: 6rem;
     padding-right: 6rem;
     transition: color 0.15s ease-out;
-    padding-bottom: 2rem;
 }
 
 a {
-    font-weight: 400;
+    font-weight: 700;
     font-size: 1.5rem;
     font-family: Roboto;
     letter-spacing: 1px;
-    color: rgb(0, 26, 255);
+    color: rgb(0, 8, 34);
     font-family: 'Barlow Condensed', sans-serif;
     transition: color 0.15s ease-out;
-    padding-bottom: 2rem;
+    padding-bottom: 1.3rem;
+}
+
+.icon{
+    width: 24px;
+    height: 24px;
+    position: relative;
+    top: 6px;
+    opacity:1;
+    transition: all 0.2s ease-out;
+    padding-bottom: 2 rem;
 }
 
 a.tel {
     color: rgb(0, 0, 0);
+    text-decoration: none;
 }
 
+.redes a{
+    font-size: 1rem;
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}
 /*
                                                  ,,    ,,           
      ,.-==-.     `7MMM.     ,MMF'              `7MM    db           
@@ -588,6 +655,7 @@ Wb  YML.dML..d'    M  `YM'   MM  YM.    , `Mb    MM    MM  8M   MM
         /* Centra horizontalmente los elementos en la barra */
         align-items: center;
         padding-left: 0px;
+        transition: all 0.5s;
     }
 
     .btn {
@@ -620,6 +688,7 @@ Wb  YML.dML..d'    M  `YM'   MM  YM.    , `Mb    MM    MM  8M   MM
         /* Centra horizontalmente los elementos en la barra */
         align-items: center;
         padding-left: 0px;
+        transition: all 0.5s;
     }
 
     .btn {
@@ -645,11 +714,13 @@ Wb  YML.dML..d'    M  `YM'   MM  YM.    , `Mb    MM    MM  8M   MM
         padding-bottom: 1.2rem;
         font-size: 1rem;
     }
+    a {
+        font-size: 1rem;
+    }
 
     h2 {
         padding-left: 2rem;
         padding-right: 2rem;
-        padding-top: 1.7rem;
         font-size: 1.4rem;
     }
 
@@ -674,8 +745,19 @@ Wb  YML.dML..d'    M  `YM'   MM  YM.    , `Mb    MM    MM  8M   MM
 /*resolucion tablet < 768 px*/
 
 @media (max-width:768px) {
-    .bar {
+
+    .main-content.marca{
+        display: flex;
+        flex-flow: column;
+    }
+    .background{
+        background-position:75% 50%;
+    }
+    .btn {
         display: none;
+    }
+    .bar.notclicked{
+        transition-delay: 0.1s;
     }
 
     .control-btn {
@@ -696,10 +778,10 @@ Wb  YML.dML..d'    M  `YM'   MM  YM.    , `Mb    MM    MM  8M   MM
         width: calc(var(--bar-height1) * 0.85);
         height: calc(var(--bar-height1) * 0.85);
         font-family: Poppins;
+        z-index: 600;
     }
 
     .control-btn.clicked {
-        z-index: 600;
         cursor: pointer;
         transform: rotateZ(-90deg)
     }
@@ -714,6 +796,7 @@ Wb  YML.dML..d'    M  `YM'   MM  YM.    , `Mb    MM    MM  8M   MM
 
     .bar {
         height: 50px;
+        transition: all 0.5s;
     }
 
     .main-box {
@@ -736,13 +819,13 @@ Wb  YML.dML..d'    M  `YM'   MM  YM.    , `Mb    MM    MM  8M   MM
     h2 {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
-        padding-top: 1.7rem;
     }
 
     h3 {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
+
 }
 
 /*resolucion movil < 768 px*/
