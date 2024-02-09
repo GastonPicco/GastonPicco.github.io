@@ -61,6 +61,11 @@ menu.addEventListener('click', () => {
 
 // FUNCIONES
 
+function toggleBarra (){
+    mainBar.classList.toggle('notclicked')
+    console.log("patata")
+}
+
 function cambiarBoton(boton) {
     botones.forEach((btn, indice) => {
         btn.classList.remove("active");
@@ -79,8 +84,8 @@ function mostrarBotones(index) {
     setTimeout(() => {
         botones[index].classList.toggle('show');
     }, index * 100);
-    mainBar.classList.toggle('notclicked')
 }
+
 function mostrarBotonesMovil(index) {
     setTimeout(() => {
         botonesMovil[index].classList.toggle('hidden');
@@ -92,10 +97,12 @@ function logoClickEvent() {
 
     logo.classList.toggle('clicked'); // Agrega o quita la clase 'clicked' al hacer clic
     logoTxt.classList.toggle('clicked');
-    mainBar.classList.toggle('notclicked')
+    //mainBar.classList.toggle('notclicked')
     controlBtn.classList.toggle('clicked')
+    toggleBarra()
     for (let i = 0; i < botones.length; i++) {
         mostrarBotones(i);
+        console.log("toggle" + i)
     }
     if (logo.className.match("clicked") && firstClick == false) {
         firstClick = true;
@@ -130,3 +137,4 @@ function ActualizarContenedor(id) {
     mainContent[id].classList.remove('right')
 
 }
+
